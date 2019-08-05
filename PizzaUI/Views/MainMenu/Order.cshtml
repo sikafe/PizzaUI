@@ -1,0 +1,78 @@
+﻿@model Entities.OrderViewModel
+
+@{
+    ViewData["Title"] = "Safari Pizza";
+    Layout = "~/Views/Shared/_LayoutOrderMenu.cshtml";
+}
+
+    
+    <div class="container" style=" padding-top:5%;">
+        @*<img src="~/resources/imgs/shoppingcartimage.jpg">*@
+        <h1>Order</h1>
+        
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Item Name
+                        </th>
+                        <th>
+                            Quantity
+                        </th>
+                        <th>
+                            Cost/Item
+                        </th>
+                        <th>
+                            Total Item Cost
+                        </th>
+                        <th>
+                            Remove
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (var i = 0; i < Model.ItemList.Count; i++)
+                    {
+                        var name = Model.ProductList.Find(m => m.ProductId == Model.ItemList[i].ProductId).Name;
+                        name += "  " + Model.CategoryList.Find(m => m.CategoryId == Model.ProductList.Find(x => x.ProductId == Model.ItemList[i].ProductId).CategoryId).Name;
+                        name.ToUpper();
+                        var qty = "x" + Model.ItemList[i].qty;
+                        var cost = "$" + String.Format("{0:n}", Model.ItemList[i].Amount);
+                        var price = Model.ProductList.Find(m => m.ProductId == Model.ItemList[i].ProductId).Price;
+                        var costPerItem = "$" + String.Format("{0:n}", price);
+                        <tr>
+                            <td style="border: 1px solid black;">
+                                @Html.DisplayFor(modelItem => name)
+                            </td>
+                            <td style="border: 1px solid black;">
+                                @Html.DisplayFor(modelItem => qty)
+                            </td>
+                            <td style="color:goldenrod; border: 1px solid black;">
+                                <strong> @Html.DisplayFor(modelItem => costPerItem)</strong>
+                            </td>
+                            <td style="color:goldenrod; border: 1px solid black;">
+                                <strong> @Html.DisplayFor(modelItem => cost)</strong>
+                            </td>
+                            <td style="border: 1px solid black;">
+                                <a asp-action="Remove" asp-route-id="@Model.ItemList[i].ProductId" style="color:blue">Remove</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <br />
+            @{
+                var preTaxOrderAmount = "$" + String.Format("{0:n}", Model.Order.PreTaxAmount);
+                var tax = "$" + String.Format("{0:n}", Model.Order.Tax);
+                var orderAmount = "$" + String.Format("{0:n}", Model.Order.TotalAmount);
+            }
+
+            <p style="text-align:right; ">Total Pre-Tax Amount:<span style="color:goldenrod"> <strong>@preTaxOrderAmount</strong></span> </p>
+            <p style="text-align:right; ">Tax:<span style="color:goldenrod"> <strong>@tax</strong></span> </p>
+            <hr width="20%" style="text-align:right; margin-right:0; border-top: 1px dotted black; " />
+            <p style="text-align:right; ">Total Order Amount:<span style="color:goldenrod"> <strong>@orderAmount</strong></span> </p>
+            <input type="button" value="Checkout" class="btn btn-sm btn-primary" onclick="location.href='@Url.Action("CheckOut", "MainMenu")'" style="float:right" />
+
+    </div>
+    <div style="padding-left:10%"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpV1e6R8VG-X6aKHT-jdplizZgQSHvBjzihW852kciL4KpZSd7"/></div>

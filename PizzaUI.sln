@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29025.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaUI", "PizzaUI\PizzaUI.csproj", "{AF167E3A-DBC6-4730-ABE0-38FD49C5AF7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{38ED76D7-E066-4FBA-9290-897BE79F3ED6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AF167E3A-DBC6-4730-ABE0-38FD49C5AF7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF167E3A-DBC6-4730-ABE0-38FD49C5AF7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF167E3A-DBC6-4730-ABE0-38FD49C5AF7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF167E3A-DBC6-4730-ABE0-38FD49C5AF7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38ED76D7-E066-4FBA-9290-897BE79F3ED6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38ED76D7-E066-4FBA-9290-897BE79F3ED6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38ED76D7-E066-4FBA-9290-897BE79F3ED6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38ED76D7-E066-4FBA-9290-897BE79F3ED6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8BB1075F-7FF5-4CDB-A583-4259BD2CD409}
+	EndGlobalSection
+EndGlobal

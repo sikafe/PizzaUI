@@ -1,0 +1,44 @@
+﻿@model Entities.UIHelperModel<List<Entities.Product>, Dictionary<string, string>>
+
+@{
+    ViewData["Title"] = "Safari Pizza";
+    Layout = "~/Views/Shared/_LayoutOrderMenu.cshtml";
+}
+
+
+<div class="container" style=" padding-top:5%;">
+    <h1>Stromboli Options</h1>
+    @for (var i = 0; i < Model.DataModel.Count; i++)
+    {
+        <div class="menuitem">
+            <div class="container">
+                <div class="row">
+                    <h3>@Html.DisplayFor(modelItem => Model.DataModel[i].Name)</h3>
+                    <img src="@Url.Content(Model.ImageDictionary[Model.DataModel[i].Name])">
+                    <p>
+                        @Html.DisplayFor(modelItem => Model.DataModel[i].Description) <span style="color:goldenrod"> <strong>@Html.DisplayFor(modelItem => Model.DataModel[i].Price)</strong> </span>
+                        <br> @Html.DisplayFor(modelItem => Model.DataModel[i].Cal)
+                    </p>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-1">
+                            <form asp-action="Drinks">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="form-group">
+                                    <label name="qty" class="control-label">Qty</label>
+                                    <input name="qty"  type="number" min="0" class="form-control" />
+                                    <span class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="Order Now" class="btn btn-sm btn-primary" asp-route-id="@Model.DataModel[i].ProductId" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+

@@ -1,0 +1,25 @@
+﻿@model Entities.UIHelperModel<List<Entities.Product>, Dictionary<string, string>>
+
+@{
+    ViewData["Title"] = "Safari Pizza";
+    Layout = "~/Views/Shared/_LayoutWelcome.cshtml";
+}
+
+
+<div class="container" style=" padding-top:5%;">
+    <h1>Beverage Options</h1>
+    @foreach (var product in Model.DataModel)
+    {
+        <div class="menuitem">
+            <div class="container">
+                <div class="row">
+                    <h3>@Html.DisplayFor(modelItem => product.Name)</h3>
+                    <img src="@Url.Content(Model.ImageDictionary[product.Name])">
+                    <p>@Html.DisplayFor(modelItem => product.Description) <br> @Html.DisplayFor(modelItem => product.Cal)</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+

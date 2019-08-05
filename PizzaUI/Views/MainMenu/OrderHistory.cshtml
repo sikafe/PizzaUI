@@ -1,0 +1,55 @@
+﻿@model IEnumerable< Entities.Order>
+
+@{
+    ViewData["Title"] = "Order History";
+    Layout = "~/Views/Shared/_LayoutOrderMenu.cshtml";
+}
+    <div class="container" style=" padding-top:5%; ">
+        <h1>Order History</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DateCreated)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PreTaxAmount)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Tax)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TotalAmount)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    var preTaxOrderAmount = "$" + String.Format("{0:n}", item.PreTaxAmount);
+                    var tax = "$" + String.Format("{0:n}", item.Tax);
+                    var orderAmount = "$" + String.Format("{0:n}", item.TotalAmount);
+                    var date = item.DateCreated.ToString("F");
+                <tr>
+                    <td style="border: 1px solid black;">
+                        @Html.DisplayFor(modelItem => date)
+                    </td>
+                    <td style="color:goldenrod; border: 1px solid black;">
+                        <strong>@Html.DisplayFor(modelItem => preTaxOrderAmount)</strong>
+                    </td>
+                    <td style="color:goldenrod; border: 1px solid black;">
+                       <strong> @Html.DisplayFor(modelItem => tax)</strong>
+                    </td>
+                    <td style="color:goldenrod; border: 1px solid black;">
+                      <strong> @Html.DisplayFor(modelItem => orderAmount)</strong>
+                    </td>
+                    <td style="color:goldenrod; border: 1px solid black;">
+                        <a asp-action="OrderDetails" asp-route-id="@item.OrderId" style="color:blue">Order Details</a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+      </div>
+    <div style="padding-left:10%"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvD2KbAxeUpzcbJqvGOnj_R1kErF3v4JGn_U4NYAUWk5z61pZl" /></div>
